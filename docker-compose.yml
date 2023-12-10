@@ -1,0 +1,21 @@
+version: "2.1"
+networks:
+  internal_network:
+
+services:
+  tencent-ocr:
+    restart: always
+    networks:
+      - internal_network
+    image: land007/tencent-ocr:latest
+    container_name: tencent-ocr
+    environment:
+      - TENCENT_CLOUD_SECRET_ID=
+      - TENCENT_CLOUD_SECRET_KEY=
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "300k"
+        max-file: "3"
+    ports:
+      - "13000:3000"
