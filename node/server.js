@@ -7,7 +7,8 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '7mb' }));
+app.use(bodyParser.urlencoded({ limit: '7mb', extended: true }));
 // 允许所有域进行跨域访问
 const corsOptions = {
   origin: '*',
